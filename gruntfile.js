@@ -5,8 +5,15 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-cssmin');
   grunt.loadNpmTasks('grunt-concat-css');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-connect');
 
   grunt.initConfig({   
+    connect: {
+      dev: {
+         port: 9001,
+          base: './'
+      }
+    },   
     sass: {
       dest: {
         options: {
@@ -56,5 +63,6 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['sass:dest', 'concat_css:all', 'cssmin:my_target']);
   grunt.registerTask('reload', ['watch']);
+  grunt.registerTask('serve', ['connect']);
 }
 

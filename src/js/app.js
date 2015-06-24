@@ -6,20 +6,18 @@
   */
 angular
   .module('kitcat', [
-  	'ngRoute'
+  	'ngRoute',
+    'ngResource',
+    'ngCookies'
   ])
-  .config(function($routeProvider, $httpProvider) {
+  .config(function ($routeProvider, $httpProvider) {
     
     $httpProvider.defaults.headers.common['Authorization'] = 'Bearer 1234';
       
     $routeProvider
       .when('/', {
-        templateUrl: 'index.html',
+        templateUrl: 'views/home.html',
         controller: 'Home'
-      })
-      .when('/signin', {
-        templateUrl: 'app.html',
-        controller: 'User'
       })
       .otherwise({
         redirectTo: '/'
