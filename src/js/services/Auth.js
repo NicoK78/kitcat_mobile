@@ -10,11 +10,11 @@
  	.module('kitcat')
  		.service('Auth', 
  			
- 			function ($http, $cookies, API) {
+ 			function ($http, API) {
 
 		    	var Auth = {
 
-		    		cookie: $cookies.getObject('user-kitcat-motherfucker-app') || {},
+		    		cookie: store.get('user-kitcat') || {},
 
 		    		get: function (callback)
 		    		{
@@ -37,7 +37,7 @@
 		    		remove: function ()
 		    		{
 
-		    			$cookies.remove('user-kitcat-motherfucker-app');
+		    			store.remove('user-kitcat');
 
 		    		},
 
@@ -45,7 +45,7 @@
 		    		{
 		    			var c = cookie || {};
 
-		    			$cookies.putObject('user-kitcat-motherfucker-app', c);
+		    			store.set('user-kitcat', c);
 		    		}
 
 		    	};

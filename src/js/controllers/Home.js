@@ -5,20 +5,21 @@
  * @description home page controller.
  * @param {Class} $scope
  */
-angular.module('kitcat').controller('Home', function (API, Auth, CervoControl, $scope, $rootScope, $cookies, $window) {
+angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootScope, $window) {
 	var init = function () 
 	{
 		$rootScope.errmsg = '';
 
 		Auth.get(function(err, res){
 			$scope.user = res;
-			console.log(res);
 
 			if ($scope.user) {
 				API.getCatsByOwner($scope.user._id, function(err, cats){
 					$scope.cats = cats;
 				});
-				CervoControl.init();
+
+				window.WebSocket = window.WebSocket || window.MozWebSocket;
+				$scope.ws = new WebSocket('ws://192.168.12.131:3000/ws');
 			}
 		});
 	};
@@ -52,18 +53,11 @@ angular.module('kitcat').controller('Home', function (API, Auth, CervoControl, $
 		$window.location.assign('/'); 
 	};
 
-	$scope.deleteCat = function (catId)
-	{
-		API.deleteCat(catId, function(err, res){
-			if (err) {
-				$rootScope.errmsg = err;
-
-				return false;
-			}
-
-			$window.location.assign('/'); 
-		});
-	};	
+	$scope.eventType = "No events yet";
+	$scope.onTop = function (event) {
+		$scope.eventType = event.type;
+		$scope.ws.send(500);
+	};
 
 	init();
 });
