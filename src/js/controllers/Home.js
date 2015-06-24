@@ -13,16 +13,47 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 		Auth.get(function(err, res){
 			$scope.user = res;
 
-			if ($scope.user) {
+			if (!err && res) {
 				API.getCatsByOwner($scope.user._id, function(err, cats){
 					$scope.cats = cats;
 				});
 
 				window.WebSocket = window.WebSocket || window.MozWebSocket;
 				$scope.ws = new WebSocket('ws://192.168.12.131:3000/ws');
+
+				$scope.lastConnection = store.get('lastConnection') || null;
+				if(!$scope.lastConnection) {
+					var timestampNow = Date.now() /1000 |0;
+					store.set('lastConnection', timestampNow);
+				}
 			}
 		});
 	};
+
+	// device APIs are available
+    //
+    var onDeviceReady = function () {
+        // Register the event listener
+        document.addEventListener("backbutton", onBackKeyDown, false);
+    }
+
+    // Handle the back button
+    //
+    var onBackKeyDown = function () {
+    	if($scope.lastConnection) {
+    		var timestampNow = Date.now() /1000 |0;
+
+    		if($scope.user.timespent > 0) {
+    			$scope.user.timespent += ($scope.lastConnection - timestampNow);
+    		} else {
+    			$scope.user.timespent = ($scope.lastConnection - timestampNow);
+    		}
+    		
+    		API.updateUser($scope.user, function(er, res){});
+    	}
+    	store.remove('lastConnection');
+    }
+
 
 	$scope.signin = function (user)
 	{
