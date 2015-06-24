@@ -53,10 +53,24 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 		$window.location.assign('/'); 
 	};
 
-	$scope.eventType = "No events yet";
 	$scope.onTop = function (event) {
 		$scope.eventType = event.type;
-		$scope.ws.send(500);
+		$scope.ws.send('top');
+	};
+
+	$scope.onBottom = function (event) {
+		$scope.eventType = event.type;
+		$scope.ws.send('bottom');
+	};
+
+	$scope.onLeft = function (event) {
+		$scope.eventType = event.type;
+		$scope.ws.send('left');
+	};
+
+	$scope.onRight = function (event) {
+		$scope.eventType = event.type;
+		$scope.ws.send('right');
 	};
 
 	init();

@@ -20,21 +20,32 @@
 
 <section ng-if="user">
 
-	<div id="top" data-value="500" hm-tap="onTop"
-      hm-doubletap="onTop">{{eventType}}</div>
+	<canvas id="videoCanvas" width="640" height="480">
+		<p>
+			Please use a browser that supports the Canvas Element, like
+			<a href="http://www.google.com/chrome">Chrome</a>,
+			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
+			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
+		</p>
+	</canvas>
+
+	<div class="button top" hm-tap="onTop" hm-doubletap="onTop">Top</div>
+	<div class="button left" hm-tap="onLeft" hm-doubletap="onLeft">Left</div>
+	<div class="button right" hm-tap="onRight" hm-doubletap="onRight">Right</div>
+	<div class="button bottom" hm-tap="onBottom" hm-doubletap="onBottom">Bottom</div>
 
 	<script type="text/javascript" src="src/js/lib/jsmpg.js"></script>
 	<script type="text/javascript">
 
 		// Show loading notice
-		// var canvas = document.getElementById('videoCanvas');
-		// var ctx = canvas.getContext('2d');
-		// ctx.fillStyle = '#444';
-		// ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
+		var canvas = document.getElementById('videoCanvas');
+		var ctx = canvas.getContext('2d');
+		ctx.fillStyle = '#444';
+		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
- 	// 	// Setup the WebSocket connection and start the player
-		// var client = new WebSocket('ws://192.168.12.131:8084/');
-		// var player = new jsmpeg(client, {canvas:canvas});
+ 		// Setup the WebSocket connection and start the player
+		var client = new WebSocket('ws://192.168.12.131:8084/');
+		var player = new jsmpeg(client, {canvas:canvas});
 
 		// $(function () {
 		// 	window.WebSocket = window.WebSocket || window.MozWebSocket;

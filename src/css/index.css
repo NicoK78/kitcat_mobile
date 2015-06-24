@@ -1,8 +1,6 @@
 body {
   padding: 0;
   margin: 0;
-  width: 100vw;
-  height: 100vh;
 }
 
 #logo_accueil {
@@ -23,46 +21,15 @@ form input {
 
 #videoCanvas {
   width: 100%;
-  height: 100%;
   padding: 0;
   margin: 0;
 }
 
-#joy_contain {
-  position: absolute;
-  bottom: 5px;
-  right: 5px;
-}
-
-#joystick {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  background: transparent;
-}
-#joystick div {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background: blue;
-}
-
-#left {
-  top: 50%;
-  left: 0px;
-  margin-top: -25px;
-}
-
-#right {
-  top: 50%;
-  right: 0px;
-  margin-top: -25px;
-}
-
-#bottom {
-  bottom: 0px;
-  left: 50%;
-  margin-left: -25px;
+button {
+  background: #eeeeee;
+  min-width: 100px;
+  height: 3em;
+  line-height: 3em;
 }
 
 /*# sourceMappingURL=index.css.map */
