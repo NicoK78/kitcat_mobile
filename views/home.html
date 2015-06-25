@@ -1,5 +1,3 @@
-<div ng-click="logout()">Logout</div>
-
 <section ng-if="!user">
 	<form>
 		<div>
@@ -20,7 +18,15 @@
 	{{errmsg}}
 </section>
 
-<section ng-if="user">
+
+
+<section ng-if="user" class="left-section">
+	
+</section>
+
+
+
+<section ng-if="user" class="right-section">
 
 	<div class="button" ng-click="logout()">Logout</div>
 

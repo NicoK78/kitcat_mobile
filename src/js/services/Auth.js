@@ -2,7 +2,7 @@
 
 /**
  * @class root.services.Auth
- * @description kitcat Auth REST client
+ * @description kitcat Auth manager
  * 
  * @param $http
  */
@@ -14,8 +14,23 @@
 
 		    	var Auth = {
 
+		    		/**
+		        	 * @var cookie
+		        	 * @memberof root.services.Auth
+		        	 * @description The user object stored in local storage
+		        	 * @public
+		        	 */
 		    		cookie: store.get('user-kitcat') || {},
 
+		    		/**
+		        	 * @function get
+		        	 * @memberof root.services.Auth
+		        	 * @description Get the user from API for the user that stored in local storage
+		        	 * @param {Function} callback
+		        	 * @public
+		        	 *
+		        	 * @returns {Function} Callback(err, res)
+		        	 */
 		    		get: function (callback)
 		    		{
 
@@ -34,6 +49,14 @@
 
 		    		},
 
+		    		/**
+		        	 * @function remove
+		        	 * @memberof root.services.Auth
+		        	 * @description Remove the user from the local storage
+		        	 * @public
+		        	 *
+		        	 * @returns {Void}
+		        	 */
 		    		remove: function ()
 		    		{
 
@@ -41,11 +64,20 @@
 
 		    		},
 
-		    		update: function (cookie)
+		    		/**
+		        	 * @function update
+		        	 * @memberof root.services.Auth
+		        	 * @description Update the user from the local storage with the given user object
+		        	 * @param {Object} user
+		        	 * @public
+		        	 *
+		        	 * @returns {Void} 
+		        	 */
+		    		update: function (user)
 		    		{
-		    			var c = cookie || {};
+		    			var u = user || {};
 
-		    			store.set('user-kitcat', c);
+		    			store.set('user-kitcat', u);
 		    		}
 
 		    	};
