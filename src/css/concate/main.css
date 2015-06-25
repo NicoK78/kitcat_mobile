@@ -20,6 +20,12 @@
     padding: 0;
     margin: 0;
   }
+
+  .stats {
+    transform: rotate(90deg);
+    padding: 0;
+    margin: 0;
+  }
 }
 @media only screen and (orientation: landscape) {
   #videoCanvas {

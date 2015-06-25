@@ -37,7 +37,7 @@
 		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
  		// Setup the WebSocket connection and start the player
-		var client = new WebSocket('ws://{{user.raspIp}}:{{user.raspPortCam}}/');
+		var client = new WebSocket('ws://192.168.12.131:8084/');
 		var player = new jsmpeg(client, {canvas:canvas});
 
 		// $(function () {
@@ -56,7 +56,7 @@
 	</script> 
 </section>
 
-<section id="stats" ng-if="user" hm-swipeleft="onSwipeLeft" style="background-color: red; position: absolute; width: 90%; height: 100%; top: 0; left: -90%">
+<section id="stats" class="stats" ng-if="user" hm-swipeleft="onSwipeLeft" style="background-color: red; position: absolute; width: 90%; height: 100%; top: 0; left: -90%">
 	<link rel="stylesheet" type="text/css" href="css/style_l.css" media="screen and (orientation: landscape)">
 	<h1>TEST</h1>
 </section>
