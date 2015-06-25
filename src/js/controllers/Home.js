@@ -19,7 +19,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 				});
 
 				window.WebSocket = window.WebSocket || window.MozWebSocket;
-				$scope.ws = new WebSocket('ws://192.168.12.131:3000/ws');
+				$scope.ws = new WebSocket('ws://'+$scope.user.raspIp+':'+$scope.user.raspPortCervo+'/ws');
 
 				document.addEventListener("backbutton", onBackKeyDown, false);
 			}
@@ -27,6 +27,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 			if(!res) {
 				Auth.remove();
 			}
+
 		});
 	};
 
@@ -41,31 +42,42 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
     var saveStats = function (callback)
     {
+    	store.remove('lastConnection');
+
     	if($scope.lastConnection) {
-    		var timestampNow = Date.now() /1000 |0;
+    		var timestampNow = (Date.now() / 1000 | 0);
 
     		if($scope.cats[0].timespent > 0) {
-    			$scope.cats[0].timespent += ($scope.lastConnection - timestampNow);
+    			$scope.cats[0].timespent += (timestampNow - $scope.lastConnection);
     		} else {
-    			$scope.cats[0].timespent = ($scope.lastConnection - timestampNow);
+    			$scope.cats[0].timespent = (timestampNow - $scope.lastConnection);
     		}
-    		var date = new Date($scope.lastConnection*1000);
-    		var day = date.toString();
+    		var day = new Date($scope.lastConnection*1000).toLocaleDateString();
+
+    		$scope.cats[0].daysPlayed = JSON.parse($scope.cats[0].daysPlayed);
+
+    		if(typeof $scope.cats[0].daysPlayed !== 'object') {
+    			$scope.cats[0].daysPlayed = {};
+    		}
 
     		if (!$scope.cats[0].daysPlayed[day]) {
-    			$scope.cats[0].daysPlayed[day].timespent = ($scope.lastConnection - timestampNow);
-    			$scope.cats[0].daysPlayed[day].nbPlayed = 1;
+    			$scope.cats[0].daysPlayed[day] = {};
+    			$scope.cats[0].daysPlayed[day]['timespent'] = (timestampNow - $scope.lastConnection);
+    			$scope.cats[0].daysPlayed[day]['nbPlayed'] = 1;
     		} else {
-    			$scope.cats[0].daysPlayed[day].timespent += ($scope.lastConnection - timestampNow);
-    			$scope.cats[0].daysPlayed[day].nbPlayed += 1;
+    			$scope.cats[0].daysPlayed[day]['timespent'] += (timestampNow - $scope.lastConnection);
+    			$scope.cats[0].daysPlayed[day]['nbPlayed'] += 1;
     		}
-    		
+
+    		$scope.cats[0].daysPlayed = JSON.stringify($scope.cats[0].daysPlayed);
+
     		API.updateCat($scope.cats[0], function(err, res){
-    			store.remove('lastConnection');
 
     			return callback(err);
     		});
     	}
+
+    	return callback(null);	
     };
 
 
@@ -82,7 +94,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 			if (!err) {
 				Auth.update(res);
-				$window.location.assign('/');
+				$window.location.reload();
 			} else {
 				$scope.errmsg = err;
 
@@ -97,7 +109,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 			if (!err) {
 				Auth.remove();
 				$scope.user = null;
-				$window.location.assign('/'); 
+				$window.location.reload();
 			}
 		});
 	};

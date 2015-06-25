@@ -277,7 +277,7 @@
 
 								return callback(err, null);
 							}
-
+							console.log(res);
 							return callback(null, res);
 						});
 					},
