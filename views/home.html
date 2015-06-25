@@ -1,5 +1,3 @@
-<div ng-click="logout()">Logout</div>
-
 <section ng-if="!user">
 	<form>
 		<input type="text" placeholder="Cat's name ..." name="username" id="username" ng-model="user.username" />
@@ -13,7 +11,7 @@
 	{{errmsg}}
 </section>
 
-<section id="stream" ng-if="user" hm-swiperight="onSwipeRight">
+<section classe="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
 	<canvas id="videoCanvas" width="640" height="480">
 		<p>
@@ -39,7 +37,7 @@
 		ctx.fillText('Loading...', canvas.width/2-30, canvas.height/3);
 
  		// Setup the WebSocket connection and start the player
-		var client = new WebSocket('ws://192.168.12.131:8084/');
+		var client = new WebSocket('ws://{{user.raspIp}}:{{user.raspPortCam}}/');
 		var player = new jsmpeg(client, {canvas:canvas});
 
 		// $(function () {

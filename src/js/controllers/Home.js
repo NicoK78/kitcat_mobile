@@ -19,45 +19,72 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 				});
 
 				window.WebSocket = window.WebSocket || window.MozWebSocket;
-				$scope.ws = new WebSocket('ws://192.168.12.131:3000/ws');
+				$scope.ws = new WebSocket('ws://'+$scope.user.raspIp+':'+$scope.user.raspPortCervo+'/ws');
 
-				$scope.lastConnection = store.get('lastConnection') || null;
-				if(!$scope.lastConnection) {
-					var timestampNow = Date.now() /1000 |0;
-					store.set('lastConnection', timestampNow);
-				}
+				document.addEventListener("backbutton", onBackKeyDown, false);
 			}
+
+			if(!res) {
+				Auth.remove();
+			}
+
 		});
 	};
 
-	// device APIs are available
-    //
-    var onDeviceReady = function () {
-        // Register the event listener
-        document.addEventListener("backbutton", onBackKeyDown, false);
-    }
-
     // Handle the back button
     //
-    var onBackKeyDown = function () {
-    	if($scope.lastConnection) {
-    		var timestampNow = Date.now() /1000 |0;
+    var onBackKeyDown = function () 
+    {
+    	saveStats(function(err){
 
-    		if($scope.user.timespent > 0) {
-    			$scope.user.timespent += ($scope.lastConnection - timestampNow);
-    		} else {
-    			$scope.user.timespent = ($scope.lastConnection - timestampNow);
-    		}
-    		
-    		API.updateUser($scope.user, function(er, res){});
-    	}
-    	store.remove('lastConnection');
+    	});
     }
+
+    var saveStats = function (callback)
+    {
+    	store.remove('lastConnection');
+
+    	if($scope.lastConnection) {
+    		var timestampNow = (Date.now() / 1000 | 0);
+
+    		if($scope.cats[0].timespent > 0) {
+    			$scope.cats[0].timespent += (timestampNow - $scope.lastConnection);
+    		} else {
+    			$scope.cats[0].timespent = (timestampNow - $scope.lastConnection);
+    		}
+    		var day = new Date($scope.lastConnection*1000).toLocaleDateString();
+
+    		$scope.cats[0].daysPlayed = JSON.parse($scope.cats[0].daysPlayed);
+
+    		if(typeof $scope.cats[0].daysPlayed !== 'object') {
+    			$scope.cats[0].daysPlayed = {};
+    		}
+
+    		if (!$scope.cats[0].daysPlayed[day]) {
+    			$scope.cats[0].daysPlayed[day] = {};
+    			$scope.cats[0].daysPlayed[day]['timespent'] = (timestampNow - $scope.lastConnection);
+    			$scope.cats[0].daysPlayed[day]['nbPlayed'] = 1;
+    		} else {
+    			$scope.cats[0].daysPlayed[day]['timespent'] += (timestampNow - $scope.lastConnection);
+    			$scope.cats[0].daysPlayed[day]['nbPlayed'] += 1;
+    		}
+
+    		$scope.cats[0].daysPlayed = JSON.stringify($scope.cats[0].daysPlayed);
+
+    		API.updateCat($scope.cats[0], function(err, res){
+
+    			return callback(err);
+    		});
+    	}
+
+    	return callback(null);	
+    };
 
 
 	$scope.signin = function (user)
 	{
-		if (!user.username || !user.password || user.username === '' || user.password === '') {
+
+		if (!user || !user.username || !user.password || user.username === '' || user.password === '') {
 			$rootScope.errmsg = 'Both fields are required';
 
 			return false;
@@ -67,7 +94,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 			if (!err) {
 				Auth.update(res);
-				$window.location.assign('/');
+				$window.location.reload();
 			} else {
 				$scope.errmsg = err;
 
@@ -78,27 +105,51 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 	$scope.logout = function ()
 	{
-		Auth.remove();
-		$scope.user = null;
-		$window.location.assign('/'); 
+		saveStats(function(err){
+			if (!err) {
+				Auth.remove();
+				$scope.user = null;
+				$window.location.reload();
+			}
+		});
 	};
 
 	$scope.onTop = function (event) {
+		$scope.lastConnection = store.get('lastConnection') || null;
+		if(!$scope.lastConnection) {
+			var timestampNow = Date.now() /1000 |0;
+			store.set('lastConnection', timestampNow);
+		}
 		$scope.eventType = event.type;
 		$scope.ws.send('top');
 	};
 
 	$scope.onBottom = function (event) {
+		$scope.lastConnection = store.get('lastConnection') || null;
+		if(!$scope.lastConnection) {
+			var timestampNow = Date.now() /1000 |0;
+			store.set('lastConnection', timestampNow);
+		}
 		$scope.eventType = event.type;
 		$scope.ws.send('bottom');
 	};
 
 	$scope.onLeft = function (event) {
+		$scope.lastConnection = store.get('lastConnection') || null;
+		if(!$scope.lastConnection) {
+			var timestampNow = Date.now() /1000 |0;
+			store.set('lastConnection', timestampNow);
+		}
 		$scope.eventType = event.type;
 		$scope.ws.send('left');
 	};
 
 	$scope.onRight = function (event) {
+		$scope.lastConnection = store.get('lastConnection') || null;
+		if(!$scope.lastConnection) {
+			var timestampNow = Date.now() /1000 |0;
+			store.set('lastConnection', timestampNow);
+		}
 		$scope.eventType = event.type;
 		$scope.ws.send('right');
 	};

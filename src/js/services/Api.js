@@ -14,6 +14,12 @@
 
 		        var API = {
 
+		        	/**
+		        	 * @var baseUrl
+		        	 * @memberof root.services.API
+		        	 * @description The API domain
+		        	 * @public
+		        	 */
 		        	baseUrl: 'http://kitcat.herokuapp.com',
 
 		        	/**
@@ -232,6 +238,16 @@
 						});
 					},
 
+					/**
+		        	 * @function updateUser
+		        	 * @memberof root.services.API
+		        	 * @description Put method to update a user info
+		        	 * @param {Object} user
+		        	 * @param {Function} callback
+		        	 * @public
+		        	 *
+		        	 * @returns {Function} Callback(err, res)
+		        	 */
 					updateUser: function (user, callback)
 					{
 						API.put('/user/'+user._id, user, function(err, res){
@@ -240,6 +256,28 @@
 								return callback(err, null);
 							}
 
+							return callback(null, res);
+						});
+					},
+
+					/**
+		        	 * @function getCatsByOwner
+		        	 * @memberof root.services.API
+		        	 * @description Put method to update a cat infos
+		        	 * @param {Object} cat
+		        	 * @param {Function} callback
+		        	 * @public
+		        	 *
+		        	 * @returns {Function} Callback(err, res)
+		        	 */
+					updateCat: function (cat, callback)
+					{
+						API.put('/cat/'+cat._id, cat, function(err, res){
+							if (err) {
+
+								return callback(err, null);
+							}
+							console.log(res);
 							return callback(null, res);
 						});
 					},
