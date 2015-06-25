@@ -1,14 +1,7 @@
 <section ng-if="!user">
 	<form>
-		<div>
-			<label for="username">Username</label>
-			<input type="text" name="username" id="username" ng-model="user.username">
-		</div>
-		
-		<div>
-			<label for="password">Password</label>
-			<input type="password" name="password" id="password" ng-model="user.password">
-		</div>
+		<input type="text" placeholder="Cat's name ..." name="username" id="username" ng-model="user.username" />
+		<input type="password" placeholder="Cat's pass ..."  name="password" id="password" ng-model="user.password"/>
 
 		<div>
 			<button ng-click="signin(user)">Go!</button>

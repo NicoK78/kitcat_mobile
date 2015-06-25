@@ -26,7 +26,6 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 	$scope.signin = function (user)
 	{
-
 		if (!user.username || !user.password || user.username === '' || user.password === '') {
 			$rootScope.errmsg = 'Both fields are required';
 
