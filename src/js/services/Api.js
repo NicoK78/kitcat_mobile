@@ -14,7 +14,7 @@
 
 		        var API = {
 
-		        	baseUrl: 'http://localhost:3000',
+		        	baseUrl: 'http://kitcat.herokuapp.com',
 
 		        	/**
 		        	 * @function get
