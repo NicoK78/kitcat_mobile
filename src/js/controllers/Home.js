@@ -5,7 +5,7 @@
  * @description home page controller.
  * @param {Class} $scope
  */
-angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootScope, $window) {
+angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootScope, $location) {
 	var init = function () 
 	{
 		$rootScope.errmsg = '';
@@ -37,7 +37,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 			if (!err) {
 				Auth.update(res);
-				$window.location.assign('/');
+				$location.path('/');
 			} else {
 				$scope.errmsg = err;
 
@@ -50,7 +50,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 	{
 		Auth.remove();
 		$scope.user = null;
-		$window.location.assign('/'); 
+		$location.path('/'); 
 	};
 
 	$scope.onTop = function (event) {
