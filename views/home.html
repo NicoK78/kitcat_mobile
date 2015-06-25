@@ -13,7 +13,7 @@
 	{{errmsg}}
 </section>
 
-<section ng-if="user">
+<section id="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
 	<canvas id="videoCanvas" width="640" height="480">
 		<p>
@@ -56,4 +56,9 @@
 
 		// });
 	</script> 
+</section>
+
+<section id="stats" ng-if="user" hm-swipeleft="onSwipeLeft" style="background-color: red; position: absolute; width: 90%; height: 100%; top: 0; left: -90%">
+	<link rel="stylesheet" type="text/css" href="css/style_l.css" media="screen and (orientation: landscape)">
+	<h1>TEST</h1>
 </section>

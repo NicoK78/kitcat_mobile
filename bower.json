@@ -28,6 +28,7 @@
     "store": "~2.3.0",
     "jquery": "~2.1.4",
     "ryanmullins-angular-hammer": "~2.1.10",
-    "hammerjs": "~2.0.4"
+    "hammerjs": "~2.0.4",
+    "greensock": "~1.17.0"
   }
 }

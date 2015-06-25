@@ -1,39 +1,45 @@
-body
-    padding: 0
-    margin: 0
+@media only screen and (orientation: portrait)
+    #logo_accueil
+        width: 80%
+        margin-left: 10%
+        padding-top: 5%
+        padding-bottom: 5%
 
-// ACCUEIL
-#logo_accueil
-    width: 80%
-    margin-left: 10%
-    padding-top: 5%
-    padding-bottom: 5%
+    form
+        text-align: center
 
-form
-    text-align: center
+        input
+            height: 20px
+            width: 50%
+            margin: 5px
 
-    input
-        height: 20px
-        width: 50%
-        margin: 5px
+    // ACCUEIL
+
+    #stream
+        transform: rotate(90deg)
+        padding: 0
+        margin: 0
 
 
-// STREAM
-#videoCanvas
-    width: 100%
-    padding: 0
-    margin: 0
-button
-    background: #eeeeee
-    min-width: 100px
-    height: 3em
-    line-height: 3em
+@media only screen and (orientation: landscape)
 
-button.left
+    // STREAM
 
-button.right
+    #videoCanvas
+        width: 100%
+        padding: 0
+        margin: 0
+        button
+            background: #eeeeee
+            min-width: 100px
+            height: 3em
+            line-height: 3em
 
-button.top
-    
-button.bottom
+    button.left
+
+    button.right
+
+    button.top
+            
+    button.bottom
 

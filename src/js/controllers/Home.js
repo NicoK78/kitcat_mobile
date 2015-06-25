@@ -103,5 +103,31 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 		$scope.ws.send('right');
 	};
 
+	$scope.onSwipeRight = function(event) {
+		// $('#stats').animate({
+  //   		width: 'toggle'
+  //   	}, {
+  //   		queue: false,
+  //   		duration: 500
+  //   	})
+		TweenMax.to($('#stats'), 0.5, {
+			left: '0%',
+			ease: Circ.easeOut
+		});
+	};
+
+	$scope.onSwipeLeft = function(event) {
+		// $('#stats').animate({
+  //   		width: 'toggle'
+  //   	}, {
+  //   		queue: false,
+  //   		duration: 500
+  //   	})
+		TweenMax.to($('#stats'), 0.5, {
+			left: '-90%',
+			ease: Circ.easeOut
+		});
+	};
+
 	init();
 });
