@@ -7,7 +7,6 @@
 angular
   .module('kitcat', [
   	'ngRoute',
-    'angular-repeat-n',
     'hmTouchEvents'
   ])
   .config(function ($routeProvider, $httpProvider) {
