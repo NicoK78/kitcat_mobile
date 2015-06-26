@@ -1,11 +1,16 @@
-@media only screen and (orientation: portrait) {
-  #logo_accueil {
-    width: 80%;
-    margin-left: 10%;
-    padding-top: 5%;
-    padding-bottom: 5%;
-  }
+.logo_accueil {
+  width: 80%;
+  margin-left: 10%;
+  padding-top: 5%;
+  padding-bottom: 15%;
+}
 
+h1 {
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (orientation: portrait) {
   form {
     text-align: center;
   }
@@ -21,13 +26,20 @@
     margin: 0;
   }
 
-  .stats {
-    transform: rotate(90deg);
-    padding: 0;
-    margin: 0;
+  #stats {
+    display: none;
   }
 }
 @media only screen and (orientation: landscape) {
+  #stats {
+    background-color: red;
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    top: 0;
+    left: -90%;
+  }
+
   #videoCanvas {
     width: 100%;
     padding: 0;
@@ -40,5 +52,3 @@
     line-height: 3em;
   }
 }
-
-/*# sourceMappingURL=index.css.map */

@@ -15,8 +15,15 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 			if (!err && res) {
 				API.getCatsByOwner($scope.user._id, function(err, cats){
+					console.log(cats);
 					$scope.cats = cats;
 				});
+
+				// TRYHARD
+				API.getUserById($scope.user._id, function(err, id){
+					$scope.userName = 'Bonjour '+id.username+' !';
+				});
+				// FINDUTRYHARD
 
 				window.WebSocket = window.WebSocket || window.MozWebSocket;
 				$scope.ws = new WebSocket('ws://'+$scope.user.raspIp+':'+$scope.user.raspPortCervo+'/ws');
@@ -29,6 +36,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 			}
 
 		});
+
 	};
 
     // Handle the back button

@@ -1,0 +1,102 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', 'ngrepeat' ]
+2 info using npm@2.11.3
+3 info using node@v0.12.2
+4 verbose install initial load of /Users/Nico/Documents/Cours/kitcat_mobile/package.json
+5 warn package.json dev@1.0.0 No description
+6 warn package.json dev@1.0.0 No repository field.
+7 warn package.json dev@1.0.0 No README data
+8 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/bower/package.json
+9 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt/package.json
+10 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt-concat-css/package.json
+11 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt-connect/package.json
+12 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt-contrib-clean/package.json
+13 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt-contrib-cssmin/package.json
+14 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt-contrib-sass/package.json
+15 verbose installManyTop reading scoped package data from /Users/Nico/Documents/Cours/kitcat_mobile/node_modules/grunt-contrib-watch/package.json
+16 info package.json grunt@0.4.5 No license field.
+17 info package.json bower@1.4.1 No license field.
+18 info package.json grunt-concat-css@0.3.1 No license field.
+19 info package.json grunt-connect@0.2.0 No license field.
+20 info package.json grunt-contrib-clean@0.6.0 No license field.
+21 info package.json grunt-contrib-cssmin@0.12.3 No license field.
+22 info package.json grunt-contrib-sass@0.9.2 No license field.
+23 info package.json grunt-contrib-watch@0.6.1 No license field.
+24 verbose readDependencies loading dependencies from /Users/Nico/Documents/Cours/kitcat_mobile/package.json
+25 silly cache add args [ 'ngrepeat', null ]
+26 verbose cache add spec ngrepeat
+27 silly cache add parsed spec { raw: 'ngrepeat',
+27 silly cache add   scope: null,
+27 silly cache add   name: 'ngrepeat',
+27 silly cache add   rawSpec: '',
+27 silly cache add   spec: '*',
+27 silly cache add   type: 'range' }
+28 silly addNamed ngrepeat@*
+29 verbose addNamed "*" is a valid semver range for ngrepeat
+30 silly addNameRange { name: 'ngrepeat', range: '*', hasData: false }
+31 silly mapToRegistry name ngrepeat
+32 silly mapToRegistry using default registry
+33 silly mapToRegistry registry https://registry.npmjs.org/
+34 silly mapToRegistry uri https://registry.npmjs.org/ngrepeat
+35 verbose addNameRange registry:https://registry.npmjs.org/ngrepeat not in flight; fetching
+36 verbose request uri https://registry.npmjs.org/ngrepeat
+37 verbose request no auth needed
+38 info attempt registry request try #1 at 03:43:39
+39 verbose request id bdb9dd96d38c83ec
+40 http request GET https://registry.npmjs.org/ngrepeat
+41 http 404 https://registry.npmjs.org/ngrepeat
+42 verbose headers { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+42 verbose headers   'content-type': 'application/json',
+42 verbose headers   'cache-control': 'max-age=0',
+42 verbose headers   'content-length': '51',
+42 verbose headers   'accept-ranges': 'bytes',
+42 verbose headers   date: 'Fri, 26 Jun 2015 01:43:40 GMT',
+42 verbose headers   via: '1.1 varnish',
+42 verbose headers   age: '0',
+42 verbose headers   connection: 'keep-alive',
+42 verbose headers   'x-served-by': 'cache-ams4132-AMS',
+42 verbose headers   'x-cache': 'MISS',
+42 verbose headers   'x-cache-hits': '0',
+42 verbose headers   'x-timer': 'S1435283019.648250,VS0,VE421' }
+43 silly get cb [ 404,
+43 silly get   { server: 'CouchDB/1.5.0 (Erlang OTP/R16B03)',
+43 silly get     'content-type': 'application/json',
+43 silly get     'cache-control': 'max-age=0',
+43 silly get     'content-length': '51',
+43 silly get     'accept-ranges': 'bytes',
+43 silly get     date: 'Fri, 26 Jun 2015 01:43:40 GMT',
+43 silly get     via: '1.1 varnish',
+43 silly get     age: '0',
+43 silly get     connection: 'keep-alive',
+43 silly get     'x-served-by': 'cache-ams4132-AMS',
+43 silly get     'x-cache': 'MISS',
+43 silly get     'x-cache-hits': '0',
+43 silly get     'x-timer': 'S1435283019.648250,VS0,VE421' } ]
+44 verbose stack Error: 404 Not Found: ngrepeat
+44 verbose stack     at CachingRegistryClient.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:245:14)
+44 verbose stack     at Request._callback (/usr/local/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:170:14)
+44 verbose stack     at Request.self.callback (/usr/local/lib/node_modules/npm/node_modules/request/request.js:354:22)
+44 verbose stack     at Request.emit (events.js:110:17)
+44 verbose stack     at Request.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1207:14)
+44 verbose stack     at Request.emit (events.js:129:20)
+44 verbose stack     at IncomingMessage.<anonymous> (/usr/local/lib/node_modules/npm/node_modules/request/request.js:1153:12)
+44 verbose stack     at IncomingMessage.emit (events.js:129:20)
+44 verbose stack     at _stream_readable.js:908:16
+44 verbose stack     at process._tickCallback (node.js:355:11)
+45 verbose statusCode 404
+46 verbose pkgid ngrepeat
+47 verbose cwd /Users/Nico/Documents/Cours/kitcat_mobile
+48 error Darwin 14.3.0
+49 error argv "node" "/usr/local/bin/npm" "install" "ngrepeat"
+50 error node v0.12.2
+51 error npm  v2.11.3
+52 error code E404
+53 error 404 Not Found: ngrepeat
+53 error 404
+53 error 404 'ngrepeat' is not in the npm registry.
+53 error 404 You should bug the author to publish it (or use the name yourself!)
+53 error 404 It was specified as a dependency of 'dev'
+53 error 404
+53 error 404 Note that you can also install from a
+53 error 404 tarball, folder, http url, or git url.
+54 verbose exit [ 1, true ]

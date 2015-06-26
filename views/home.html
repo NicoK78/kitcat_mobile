@@ -1,4 +1,5 @@
 <section ng-if="!user">
+	<img class="logo_accueil" src="src/img/kitcat_logo.png"/>
 	<form>
 		<input type="text" placeholder="Cat's name ..." name="username" id="username" ng-model="user.username" />
 		<input type="password" placeholder="Cat's pass ..."  name="password" id="password" ng-model="user.password"/>
@@ -11,7 +12,7 @@
 	{{errmsg}}
 </section>
 
-<section classe="stream" ng-if="user" hm-swiperight="onSwipeRight">
+<section class="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
 	<div ng-click="logout()">logout</div>
 
@@ -29,3 +30,22 @@
 	<div class="button right" hm-tap="onRight" hm-doubletap="onRight">Right</div>
 	<div class="button bottom" hm-tap="onBottom" hm-doubletap="onBottom">Bottom</div>
 </section>
+
+
+<section id="stats" class="stats" ng-if="user" hm-swipeleft="onSwipeLeft">
+ 	<!-- <link rel="stylesheet" type="text/css" href="css/style_l.css" media="screen and (orientation: landscape)"> -->
+ 	<h1>{{userName}}</h1>
+ 	<div>
+ 		Mes chats :
+ 		<p>{{cats[0].name}}</p>
+ 		<p>{{cats[1].name}}</p>
+ 		<p>{{cats[2].name}}</p>
+ 		<!-- <div ng-repeat-n="cat in cats">
+ 			<p>{{cat.name}} - Niveau : {{cat.level}}</p>
+ 			<p>Temps joué : {{cat.timespent}}</p>
+	 		<p>Jours de jeu : {{cat.daysPlayed}}</p>
+	 		Ses badges :
+	 		<p ng-repeat-n="badge in badges">{{badge.name}}</p>
+ 		</div> -->
+ 	</div>
+ </section> 
