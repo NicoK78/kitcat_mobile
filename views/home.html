@@ -1,15 +1,31 @@
-<section ng-if="!user">
-	<img class="logo_accueil" src="src/img/kitcat_logo.png"/>
-	<form>
-		<input type="text" placeholder="Cat's name ..." name="username" id="username" ng-model="user.username" />
-		<input type="password" placeholder="Cat's pass ..."  name="password" id="password" ng-model="user.password"/>
+<h1 class="home-title">Kit Cat</h1>
 
-		<div>
-			<button ng-click="signin(user)">Go!</button>
+<section ng-if="!user" class="ui page grid">
+
+	<form class="ui form sixteen wide column" ng-submit="signin(user)">
+
+		<h1 class="form-title">Sign in</h1>
+
+		<div class="field">
+		  <label for="pseudo">
+			Username
+		  </label>
+		  <input placeholder="Username" type="text" id="pseudo" ng-model="user.username"/>
 		</div>
-		
+
+		<div class="field">
+		  <label for="mdp">
+			Password
+		  </label>
+		  <input placeholder="Password" type="password" id="mdp" ng-model="user.password"/>
+		</div>
+
+		<button type ="submit" class="ui primary button">
+			Go!
+		</button>
+		<p>{{errmsg}}</p>
 	</form>
-	{{errmsg}}
+	
 </section>
 
 <section class="stream" ng-if="user" hm-swiperight="onSwipeRight">

@@ -1,13 +1,36 @@
-.logo_accueil {
-  width: 80%;
-  margin-left: 10%;
-  padding-top: 5%;
-  padding-bottom: 15%;
+h1.form-title {
+  color: #3F3F3F;
+  margin: 0 0 50px 0;
+  font-size: 3em;
+  font-weight: 700;
 }
 
+form {
+  color: #3F3F3F;
+  margin-top: 20px;
+}
+form input[type="text"], form input[type="password"] {
+  min-height: 50px;
+}
+
+button {
+  background-color: #ff009c !important;
+}
+
+/*# sourceMappingURL=form.css.map */
 h1 {
   width: 100%;
   text-align: center;
+}
+
+h1.home-title {
+  font-size: 4em;
+  font-weight: 700;
+  color: #3F3F3F;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #3F3F3F;
+  width: 80%;
+  margin: 0 auto;
 }
 
 @media only screen and (orientation: portrait) {
