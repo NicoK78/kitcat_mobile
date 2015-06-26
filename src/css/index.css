@@ -1,6 +1,7 @@
 h1 {
   width: 100%;
   text-align: center;
+  margin-top: 0px;
 }
 
 h1.home-title {
@@ -13,55 +14,6 @@ h1.home-title {
   margin: 0 auto;
 }
 
-@media only screen and (orientation: portrait) {
-  form {
-    text-align: center;
-  }
-  form input {
-    height: 20px;
-    width: 50%;
-    margin: 5px;
-  }
-
-  main {
-    transform: rotate(90deg);
-    padding: 0;
-    margin: 0;
-  }
-
-  #stats {
-    display: none;
-  }
-}
-@media only screen and (orientation: landscape) {
-  #stats {
-    background-color: red;
-    position: absolute;
-    width: 90%;
-    height: 100%;
-    top: 0;
-    left: -90%;
-  }
-
-  .oneCat {
-    position: relative;
-    display: inline-block;
-    width: 30%;
-    margin-left: 2.5%;
-  }
-
-  #videoCanvas {
-    width: 100%;
-    padding: 0;
-    margin: 0;
-  }
-  #videoCanvas button {
-    background: #eeeeee;
-    min-width: 100px;
-    height: 3em;
-    line-height: 3em;
-  }
-}
 .loader {
   position: absolute;
   top: 50%;
@@ -106,6 +58,120 @@ h1.home-title {
   100% {
     transform: rotate(360deg);
     filter: hue-rotate(360deg);
+  }
+}
+@media only screen and (orientation: portrait) {
+  form {
+    text-align: center;
+  }
+  form input {
+    height: 20px;
+    width: 50%;
+    margin: 5px;
+  }
+
+  main {
+    transform: rotate(90deg);
+    padding: 0;
+    margin: 0;
+  }
+
+  #stats {
+    display: none;
+  }
+}
+@media only screen and (orientation: landscape) {
+  #stats {
+    background-color: rgba(0, 0, 0, 0.85);
+    position: absolute;
+    width: 90%;
+    height: 100%;
+    top: 0;
+    left: -90%;
+    color: #ffffff;
+  }
+  #stats h1 {
+    font-size: 4em;
+    font-weight: 700;
+    margin-top: 5px;
+    margin-bottom: 2px;
+  }
+
+  .oneCat {
+    margin: 50px auto 50px auto;
+    text-align: center;
+  }
+
+  .logout {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 3em;
+    color: #ff009c !important;
+    font-weight: bold;
+  }
+
+  .stream {
+    position: relative;
+  }
+
+  #videoCanvas {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+  #videoCanvas button {
+    min-width: 100px;
+    height: 3em;
+    line-height: 3em;
+  }
+
+  #joy_contain {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+  }
+
+  #joystick {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    background: transparent;
+  }
+  #joystick div {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: #ff009c !important;
+    border: 2px black solid;
+  }
+  #joystick div p {
+    color: white;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin-top: 35%;
+  }
+  #joystick #left {
+    top: 50%;
+    left: 0px;
+    margin-top: -25px;
+  }
+  #joystick #right {
+    top: 50%;
+    right: 0px;
+    margin-top: -25px;
+  }
+  #joystick #top {
+    top: 0px;
+    left: 50%;
+    margin-left: -25px;
+  }
+  #joystick #bottom {
+    bottom: 0px;
+    left: 50%;
+    margin-left: -25px;
   }
 }
 

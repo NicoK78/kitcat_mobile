@@ -13,8 +13,14 @@ form input[type="text"], form input[type="password"] {
   min-height: 50px;
 }
 
-button {
+.button {
   background-color: #ff009c !important;
+}
+
+.button.stats {
+  margin: 20px 0 20px 0 !important;
+  font-size: 20px !important;
+  text-align: center;
 }
 
 /*# sourceMappingURL=form.css.map */

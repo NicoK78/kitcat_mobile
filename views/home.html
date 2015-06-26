@@ -1,6 +1,6 @@
-<h1 class="home-title">Kit Cat</h1>
-
 <section ng-if="!user" class="ui page grid">
+
+	<h1 class="home-title">Kit Cat</h1>
 
 	<form class="ui form sixteen wide column" ng-submit="signin(user)">
 
@@ -30,42 +30,31 @@
 
 <section class="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
-	<div ng-click="logout()">logout</div>
+	<canvas id="videoCanvas" stream></canvas>
 
-	<canvas id="videoCanvas" width="640" height="480" stream>
-		<p>
-			Please use a browser that supports the Canvas Element, like
-			<a href="http://www.google.com/chrome">Chrome</a>,
-			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
-			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
-		</p>
-	</canvas>
 
-	<div class="button top" hm-tap="onTop">Top</div>
-	<div class="button left" hm-tap="onLeft">Left</div>
-	<div class="button right" hm-tap="onRight">Right</div>
-	<div class="button bottom" hm-tap="onBottom">Bottom</div>
+	<div id="joy_contain">
+		<div id="joystick">
+			<div id="top" hm-tap="onTop"><p>T</p></div>
+			<div id="left" hm-tap="onLeft"><p>L</p></div>
+			<div id="right" hm-tap="onRight"><p>R</p></div>
+			<div id="bottom" hm-tap="onBottom"><p>B</p></div>
+		</div>
+	</div>
 </section>
 
 
 <section id="stats" class="stats" ng-if="user" hm-swipeleft="onSwipeLeft">
- 	<!-- <link rel="stylesheet" type="text/css" href="css/style_l.css" media="screen and (orientation: landscape)"> -->
- 	<h1>{{userName}}</h1>
- 	<div class="allCats">
- 		Mes chats :
- 		<br>
- 		<div class="oneCat" ng-repeat="cat in cats">
- 			<p>{{cat.name}} - Niveau : {{cat.level}}</p>
- 			<p>Temps joué : {{cat.timespent}} s</p>
-			Ses badges :
-	 		<p ng-repeat-n="badge in cat.badges">{{badge.name}}</p>
-		</div>
- 		<!-- <div ng-repeat-n="cat in cats">
- 			<p>{{cat.name}} - Niveau : {{cat.level}}</p>
- 			<p>Temps joué : {{cat.timespent}}</p>
-	 		<p>Jours de jeu : {{cat.daysPlayed}}</p>
-	 		Ses badges :
-	 		<p ng-repeat-n="badge in badges">{{badge.name}}</p>
- 		</div> -->
- 	</div>
+
+	<h1>{{cat.name}}</h1>
+
+	<div class="oneCat">
+		<div ng-if="cat.level" class="ui primary button stats">Level<br>{{cat.level}}</div>
+		<div ng-if="!cat.level" class="ui primary button stats">Level<br>1</div>
+		<div ng-if="cat.timespent" class="ui primary button stats">Time played<br>{{cat.timespent}}s</div>
+		<div ng-if="!cat.timespent" class="ui primary button stats">Time played<br>0s</div>
+		<br>
+		<div class="ui primary button" ng-click="logout()" >Log out</div>
+	</div>
+
  </section> 
