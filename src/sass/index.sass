@@ -62,4 +62,49 @@ h1.home-title
             min-width: 100px
             height: 3em
             line-height: 3em
+$size: 10px
+$speed: .75s
+$wiggle1: $size/2
 
+.loader
+    position: absolute
+    top: 50%
+    left: 50%
+    height: $size
+    width: $size
+    animation: loader-rotate $speed*2 linear infinite
+    display: none
+    &:before, &:after
+        content: ''
+        position: absolute
+        transform: translate3d(-$wiggle1,-$wiggle1,0)
+        height: $size
+        width: $size
+        background: hsl(0,50%,50%)
+        opacity: .5
+        border-radius: 50%
+        animation: loader-position $speed ease-in-out infinite
+    &:after
+        animation-delay: $speed/2
+        transform: translate3d($wiggle1,$wiggle1,0)
+
+@keyframes loader-position 
+    0%
+        transform: translate3d(-$wiggle1,-$wiggle1,0)
+    
+    50%
+        transform: translate3d($wiggle1,$wiggle1,0)
+    
+    100%
+        transform: translate3d(-$wiggle1,-$wiggle1,0)
+    
+
+
+@keyframes loader-rotate 
+    0%
+        transform: rotate(0)
+        filter: hue-rotate(0deg)
+    
+    100%
+        transform: rotate(360deg)
+        filter: hue-rotate(360deg)
