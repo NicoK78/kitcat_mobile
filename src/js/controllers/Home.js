@@ -36,7 +36,6 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 			}
 
 		});
-
 	};
 
     // Handle the back button

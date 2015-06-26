@@ -1,6 +1,6 @@
-<h1 class="home-title">Kit Cat</h1>
-
 <section ng-if="!user" class="ui page grid">
+
+	<h1 class="home-title">Kit Cat</h1>
 
 	<form class="ui form sixteen wide column" ng-submit="signin(user)">
 
@@ -30,33 +30,33 @@
 
 <section class="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
-	<canvas id="videoCanvas" width="640" height="480" stream>
-		<p>
-			Please use a browser that supports the Canvas Element, like
-			<a href="http://www.google.com/chrome">Chrome</a>,
-			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
-			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
-		</p>
-	</canvas>
+	<canvas id="videoCanvas" stream></canvas>
 
-	<div class="button top" hm-tap="onTop" hm-doubletap="onTop">Top</div>
-	<div class="button left" hm-tap="onLeft" hm-doubletap="onLeft">Left</div>
-	<div class="button right" hm-tap="onRight" hm-doubletap="onRight">Right</div>
-	<div class="button bottom" hm-tap="onBottom" hm-doubletap="onBottom">Bottom</div>
+	<div id="joy_contain">
+		<div id="joystick">
+			<div id="top" hm-tap="onTop" hm-doubletap="onTop"><p>T</p></div>
+			<div id="left" hm-tap="onLeft" hm-doubletap="onLeft"><p>L</p></div>
+			<div id="right" hm-tap="onRight" hm-doubletap="onRight"><p>R</p></div>
+			<div id="bottom" hm-tap="onBottom" hm-doubletap="onBottom"><p>B</p></div>
+		</div>
+	</div>
 </section>
 
 
 <section id="stats" class="stats" ng-if="user" hm-swipeleft="onSwipeLeft">
+
+	<h1 class="home-title">Kit Cat</h1>
+
  	<h1>{{userName}}</h1>
  	<div class="allCats">
- 		Your cats :
- 		<br>
+ 		<h3>Your cats :</h3>
  		<div class="oneCat" ng-repeat="cat in cats">
  			<h2>{{cat.name}}</h2>
  			<p>Level : {{cat.level}}</p>
  			<p>Time spent : {{cat.timespent}} s</p>
 		</div>
-
-		<div class="logout" ng-click="logout()">Log out</div>
  	</div>
+
+ 	<div class="logout" ng-click="logout()">Log out</div>
+
  </section> 
