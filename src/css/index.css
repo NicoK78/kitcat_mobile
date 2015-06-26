@@ -32,7 +32,7 @@ h1 {
 }
 @media only screen and (orientation: landscape) {
   #stats {
-    background-color: red;
+    background-color: rgba(102, 102, 102, 0.5);
     position: absolute;
     width: 90%;
     height: 100%;
@@ -40,11 +40,22 @@ h1 {
     left: -90%;
   }
 
+  .allCats {
+    left: 10px;
+    right: 10px;
+  }
+
   .oneCat {
     position: relative;
     display: inline-block;
-    width: 30%;
-    margin-left: 2.5%;
+    width: 20%;
+    margin-left: 5%;
+    padding: 5px;
+  }
+
+  .logout {
+    bottom: 0;
+    right: 0;
   }
 
   #videoCanvas {

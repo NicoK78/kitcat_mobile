@@ -14,8 +14,6 @@
 
 <section class="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
-	<div ng-click="logout()">logout</div>
-
 	<canvas id="videoCanvas" width="640" height="480" stream>
 		<p>
 			Please use a browser that supports the Canvas Element, like
@@ -33,23 +31,16 @@
 
 
 <section id="stats" class="stats" ng-if="user" hm-swipeleft="onSwipeLeft">
- 	<!-- <link rel="stylesheet" type="text/css" href="css/style_l.css" media="screen and (orientation: landscape)"> -->
  	<h1>{{userName}}</h1>
  	<div class="allCats">
- 		Mes chats :
+ 		Your cats :
  		<br>
  		<div class="oneCat" ng-repeat="cat in cats">
- 			<p>{{cat.name}} - Niveau : {{cat.level}}</p>
- 			<p>Temps joué : {{cat.timespent}} s</p>
-			Ses badges :
-	 		<p ng-repeat-n="badge in cat.badges">{{badge.name}}</p>
+ 			<h2>{{cat.name}}</h2>
+ 			<p>Level : {{cat.level}}</p>
+ 			<p>Time spent : {{cat.timespent}} s</p>
 		</div>
- 		<!-- <div ng-repeat-n="cat in cats">
- 			<p>{{cat.name}} - Niveau : {{cat.level}}</p>
- 			<p>Temps joué : {{cat.timespent}}</p>
-	 		<p>Jours de jeu : {{cat.daysPlayed}}</p>
-	 		Ses badges :
-	 		<p ng-repeat-n="badge in badges">{{badge.name}}</p>
- 		</div> -->
+
+		<div class="logout" ng-click="logout()">Log out</div>
  	</div>
  </section> 

@@ -21,7 +21,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 				// TRYHARD
 				API.getUserById($scope.user._id, function(err, id){
-					$scope.userName = 'Bonjour '+id.username+' !';
+					$scope.userName = 'Hello '+id.username+' !';
 				});
 				// FINDUTRYHARD
 
