@@ -43,7 +43,7 @@ h1.home-title {
     margin: 5px;
   }
 
-  .stream {
+  main {
     transform: rotate(90deg);
     padding: 0;
     margin: 0;
