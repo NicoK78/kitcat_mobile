@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,aAAa;EACZ,KAAK,EAAE,OAAO;EACd,MAAM,EAAE,UAAU;EAClB,SAAS,EAAE,GAAG;EACd,WAAW,EAAE,GAAG;;;AAEjB,IAAI;EACH,KAAK,EAAE,OAAO;EACd,UAAU,EAAE,IAAI;;AAEhB,oDAA0C;EACzC,UAAU,EAAE,IAAI;;;AAGlB,MAAM;EACL,gBAAgB,EAAE,kBAAkB",
+"sources": ["../sass/form.sass"],
+"names": [],
+"file": "form.css"
+}

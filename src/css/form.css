@@ -1,0 +1,20 @@
+h1.form-title {
+  color: #3F3F3F;
+  margin: 0 0 50px 0;
+  font-size: 3em;
+  font-weight: 700;
+}
+
+form {
+  color: #3F3F3F;
+  margin-top: 20px;
+}
+form input[type="text"], form input[type="password"] {
+  min-height: 50px;
+}
+
+button {
+  background-color: #ff009c !important;
+}
+
+/*# sourceMappingURL=form.css.map */
