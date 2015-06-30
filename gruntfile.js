@@ -6,6 +6,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-concat-css');
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-connect');
+  grunt.loadNpmTasks('grunt-jsdoc');
 
   grunt.initConfig({   
     connect: {
@@ -58,11 +59,21 @@ module.exports = function(grunt) {
       }
     },
 
+    jsdoc : {
+      dist : {
+          src: ['src/js/*.js', 'src/js/*/*.js', 'src/js/.js', 'src/js/*/.js'],
+          options: {
+              destination: 'doc'
+          }
+      }
+    },
+
     clean: ["src/css/concate", "src/js/concate"]
   });
 
   grunt.registerTask('default', ['sass:dest', 'concat_css:all', 'cssmin:my_target']);
   grunt.registerTask('reload', ['watch']);
   grunt.registerTask('serve', ['connect']);
+  grunt.registerTask('doc', ['jsdoc:dist']);
 }
 
