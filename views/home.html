@@ -1,10 +1,10 @@
 <section ng-if="!user">
-	<form>
+	<form ng-submit="signin(user)">
 		<input type="text" placeholder="Cat's name ..." name="username" id="username" ng-model="user.username" />
 		<input type="password" placeholder="Cat's pass ..."  name="password" id="password" ng-model="user.password"/>
 
 		<div>
-			<button ng-click="signin(user)">Go!</button>
+			<button type="submit">Go!</button>
 		</div>
 		
 	</form>
