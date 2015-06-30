@@ -1,31 +1,60 @@
-<section ng-if="!user">
-	<form ng-submit="signin(user)">
-		<input type="text" placeholder="Cat's name ..." name="username" id="username" ng-model="user.username" />
-		<input type="password" placeholder="Cat's pass ..."  name="password" id="password" ng-model="user.password"/>
+<section ng-if="!user" class="ui page grid">
 
-		<div>
-			<button type="submit">Go!</button>
+	<h1 class="home-title">Kit Cat</h1>
+
+	<form class="ui form sixteen wide column" ng-submit="signin(user)">
+
+		<h1 class="form-title">Sign in</h1>
+
+		<div class="field">
+		  <label for="pseudo">
+			Username
+		  </label>
+		  <input placeholder="Username" type="text" id="pseudo" ng-model="user.username"/>
 		</div>
-		
+
+		<div class="field">
+		  <label for="mdp">
+			Password
+		  </label>
+		  <input placeholder="Password" type="password" id="mdp" ng-model="user.password"/>
+		</div>
+
+		<button type ="submit" class="ui primary button">
+			Go!
+		</button>
+		<p>{{errmsg}}</p>
 	</form>
-	{{errmsg}}
+	
 </section>
 
-<section classe="stream" ng-if="user" hm-swiperight="onSwipeRight">
+<section class="stream" ng-if="user" hm-swiperight="onSwipeRight">
 
-	<div ng-click="logout()">logout</div>
+	<canvas id="videoCanvas" stream></canvas>
 
-	<canvas id="videoCanvas" width="640" height="480" stream>
-		<p>
-			Please use a browser that supports the Canvas Element, like
-			<a href="http://www.google.com/chrome">Chrome</a>,
-			<a href="http://www.mozilla.com/firefox/">Firefox</a>,
-			<a href="http://www.apple.com/safari/">Safari</a> or Internet Explorer 10
-		</p>
-	</canvas>
 
-	<div class="button top" hm-tap="onTop" hm-doubletap="onTop">Top</div>
-	<div class="button left" hm-tap="onLeft" hm-doubletap="onLeft">Left</div>
-	<div class="button right" hm-tap="onRight" hm-doubletap="onRight">Right</div>
-	<div class="button bottom" hm-tap="onBottom" hm-doubletap="onBottom">Bottom</div>
+	<div id="joy_contain">
+		<div id="joystick">
+			<div id="top" hm-tap="onTop"><p>T</p></div>
+			<div id="left" hm-tap="onLeft"><p>L</p></div>
+			<div id="right" hm-tap="onRight"><p>R</p></div>
+			<div id="bottom" hm-tap="onBottom"><p>B</p></div>
+		</div>
+	</div>
 </section>
+
+
+<section id="stats" class="stats" ng-if="user" hm-swipeleft="onSwipeLeft">
+
+	<h1>{{cat.name}}</h1>
+
+	<div class="oneCat">
+		<div ng-if="cat.level" class="ui primary button stats">Level<br>{{cat.level}}</div>
+		<div ng-if="!cat.level" class="ui primary button stats">Level<br>1</div>
+		<div ng-if="cat.timespent" class="ui primary button stats">Time played<br>{{cat.timespent}}s</div>
+		<div ng-if="!cat.timespent" class="ui primary button stats">Time played<br>0s</div>
+		<br>
+		<div class="ui primary button" ng-click="logout()" >Log out</div>
+	</div>
+
+ </section> 

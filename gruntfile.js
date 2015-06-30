@@ -54,7 +54,7 @@ module.exports = function(grunt) {
     watch: {
       scripts: {
         files: ['src/sass/**.sass'],
-        tasks: ['minAll']
+        tasks: ['default']
       }
     },
 

@@ -1,12 +1,68 @@
+h1
+    width: 100%
+    text-align: center
+    margin-top: 0px
+
+h1.home-title
+    font-size: 4em
+    font-weight: 700
+    color: #3F3F3F
+    padding: 0 0 10px 0
+    border-bottom: 1px solid #3F3F3F
+    width: 80%
+    margin: 0 auto
+
+$size: 10px
+$speed: .75s
+$wiggle1: $size/2
+
+.loader
+    position: absolute
+    top: 50%
+    left: 50%
+    height: $size
+    width: $size
+    animation: loader-rotate $speed*2 linear infinite
+    display: none
+    &:before, &:after
+        content: ''
+        position: absolute
+        transform: translate3d(-$wiggle1,-$wiggle1,0)
+        height: $size
+        width: $size
+        background: hsl(0,50%,50%)
+        opacity: .5
+        border-radius: 50%
+        animation: loader-position $speed ease-in-out infinite
+    &:after
+        animation-delay: $speed/2
+        transform: translate3d($wiggle1,$wiggle1,0)
+
+@keyframes loader-position 
+    0%
+        transform: translate3d(-$wiggle1,-$wiggle1,0)
+    
+    50%
+        transform: translate3d($wiggle1,$wiggle1,0)
+    
+    100%
+        transform: translate3d(-$wiggle1,-$wiggle1,0)
+    
+
+
+@keyframes loader-rotate 
+    0%
+        transform: rotate(0)
+        filter: hue-rotate(0deg)
+    
+    100%
+        transform: rotate(360deg)
+        filter: hue-rotate(360deg)
+
+
 @media only screen and (orientation: portrait)
 
     // ACCUEIL
-
-    #logo_accueil
-        width: 80%
-        margin-left: 10%
-        padding-top: 5%
-        padding-bottom: 5%
 
     form
         text-align: center
@@ -18,28 +74,99 @@
 
     // STREAM
 
-    .stream
+    main
         transform: rotate(90deg)
         padding: 0
         margin: 0
 
-    .stats
-        transform: rotate(90deg)
-        padding: 0
-        margin: 0
+    #stats
+        display: none
 
 
 @media only screen and (orientation: landscape)
 
     // STREAM
 
-    #videoCanvas
+    #stats
+        background-color: rgba(0, 0, 0, 0.85)
+        position: absolute
+        width: 90%
+        height: 100%
+        top: 0
+        left: -90%
+        color: #ffffff
+        h1
+            font-size:  4em
+            font-weight: 700
+            margin-top: 5px
+            margin-bottom: 2px
+
+    .oneCat
+        margin: 50px auto 50px auto
+        text-align: center
+
+    .logout
         width: 100%
+        text-align: center
+        margin-top: 10px
+        font-size: 3em
+        color: #ff009c!important
+        font-weight: bold
+
+    .stream
+        position: relative
+
+    #videoCanvas
+        width: 100vw
+        height: 100vh
         padding: 0
         margin: 0
         button
-            background: #eeeeee
             min-width: 100px
             height: 3em
             line-height: 3em
 
+    #joy_contain
+        position: absolute
+        bottom: 5px
+        right: 5px
+
+    #joystick
+        position: relative
+        width: 150px
+        height: 150px
+        background: transparent
+
+        div
+            position: absolute
+            width: 50px
+            height: 50px
+            background: #ff009c!important
+            border: 2px black solid
+
+            p
+                color: white
+                font-weight: bold
+                width: 100%
+                text-align: center
+                margin-top: 35%
+
+        #left
+            top: 50%
+            left: 0px
+            margin-top: -25px
+
+        #right
+            top: 50%
+            right: 0px
+            margin-top: -25px
+
+        #top
+            top: 0px
+            left: 50%
+            margin-left: -25px
+
+        #bottom
+            bottom: 0px
+            left: 50%
+            margin-left: -25px

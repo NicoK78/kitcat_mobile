@@ -6,6 +6,12 @@
  * @param {Class} $scope
  */
 angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootScope, $window) {
+	$('.loader').css({
+		display: 'block'
+	});
+
+	$('main').hide();
+
 	var init = function () 
 	{
 		$rootScope.errmsg = '';
@@ -15,7 +21,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 			if (!err && res) {
 				API.getCatsByOwner($scope.user._id, function(err, cats){
-					$scope.cats = cats;
+					$scope.cat = cats[0];
 				});
 
 				window.WebSocket = window.WebSocket || window.MozWebSocket;
@@ -27,6 +33,9 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 			if(!res) {
 				Auth.remove();
 			}
+
+			$('main').fadeIn();
+			$('.loader').fadeOut();
 
 		});
 	};
@@ -90,6 +99,12 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 			return false;
 		}
 
+		$('.loader').css({
+			display: 'block'
+		});
+
+		$('main').hide();
+
 		API.signin(user.username, user.password, function(err, res){
 
 			if (!err) {
@@ -105,6 +120,12 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 
 	$scope.logout = function ()
 	{
+		$('.loader').css({
+			display: 'block'
+		});
+
+		$('main').hide();
+
 		saveStats(function(err){
 			if (!err) {
 				Auth.remove();
@@ -122,6 +143,7 @@ angular.module('kitcat').controller('Home', function (API, Auth, $scope, $rootSc
 		}
 		$scope.eventType = event.type;
 		$scope.ws.send('top');
+		console.log('top');
 	};
 
 	$scope.onBottom = function (event) {
